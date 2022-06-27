@@ -6,7 +6,7 @@
 	
 	<typeAliases>
 		<typeAlias type="member.bean.MemberDTO" alias="memberdto"/>
-		<!-- <typeAlias type="board.bean.BoardDTO" alias="boarddto"/> -->
+		<typeAlias type="board.bean.BoardDTO" alias="boarddto"/>
 	</typeAliases>
 	
 </configuration>

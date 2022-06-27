@@ -28,10 +28,39 @@ public class MemberMyBatis implements MemberDAO {
 		System.out.println("MemberMyBatis write() method 작동 넘어온 이름 :" + memberDTO.getName());
 		sqlSession.insert("memberSQL.memberWrite", memberDTO);
 	}
-//		@Override
-//		public UserDTO getUserById(String searchId) {
-//			return sqlSession.selectOne("userSQL.getUserOne", searchId);
-//		}
 	
+	
+	@Override
+	public String getMemberById(String id) {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = this.sqlSession.selectOne("memberSQL.getMemberById", id);
+		String result = null;
+		if(memberDTO != null) {
+			result = "exist";
+		}else {
+			result = "non_exist";
+		}
 		
+		return result;
+	}
+	
+	@Override
+	public MemberDTO getMemberBySessionId(String sessionId) {
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = this.sqlSession.selectOne("memberSQL.getMemberById", sessionId);
+		System.out.println("getMemberBySessionid 결과 tel 1 : " + memberDTO.getTel1());
+		System.out.println("getMemberBySessionid 결과 tel 2 : " + memberDTO.getTel2());
+		System.out.println("getMemberBySessionid 결과 tel 3 : " + memberDTO.getTel3());
+		
+		return memberDTO;
+	}
+	
+	@Override
+	public void update(Map<String, String> map) {
+		
+		this.sqlSession.update("memberSQL.memberUpdate", map);
+	
+	}
+	
+	
 }

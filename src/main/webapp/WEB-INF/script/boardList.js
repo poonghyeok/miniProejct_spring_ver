@@ -58,18 +58,20 @@ $('#forTrigger').on('custom', function(triggerError, triggerData){
 	console.log('list custom trigger start!!');
 	$.ajax({
 		type : 'post',
-		url : '/miniPJ/board/getBoardList.do',
+		url : '/miniProject/board/getBoardList',
 		data: {
 			'pg': $('#pg').val()
 		},
 		dataType : 'json',
 		success: function(result){
+				console.log(JSON.stringify(result));
 				$('#boardListTable tr').not($('#titleRow')).empty();
+				
 				$.each(result.list, function(index, items){
 					var levSpace = '';
 					var subjectRow = $('<td/>');
 					var iconReply = $('<img/>', {
-						src : '/miniPJ/img/replyArrow.gif',
+						src : '/miniProject/img/replyArrow.gif',
 						alt : 'replyArrowGif'
 					});
 					
@@ -80,7 +82,7 @@ $('#forTrigger').on('custom', function(triggerError, triggerData){
 						subjectRow.append(iconReply);
 					}
 					subjectRow.append($('<a>', {
-									href : 'http://localhost:8080/miniPJ/board/boardDetail.do?pg='+$('#pg').val()+'&seq='+items.seq,
+									href : '/miniProject/board/boardDetail?pg='+$('#pg').val()+'&seq='+items.seq,
 									id : 'subjectA_'+items.seq,
 									class : 'subjectA',
 									text : 'lev : ' + items.lev + items.subject
@@ -138,7 +140,7 @@ $(function(){
 
 $('#listBoardWriteButton').click(function(){
 	alert('menuWriteButton clicked!');
-	location.href='http://localhost:8080/miniPJ/board/boardWriteForm.do';
+	location.href='http://localhost:8080/miniProject/board/boardWriteForm';
 })
 
 /*글 제목 클릭시, 글 상세보기 */
@@ -163,7 +165,7 @@ $('#listSearchButton').click(function(){
 		$('#searchAlert').css({'color':'red', 'background-color':'yellow'});
 	}else{
 		$.ajax({
-			url: '/miniPJ/board/jQueryBoardSearch.do',
+			url: '/miniProject/board/boarListSearch',
 			type : 'post',
 			data : { searchOption : searchOption,
 				searchCondition : searchCondition,

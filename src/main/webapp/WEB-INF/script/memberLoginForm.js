@@ -1,13 +1,14 @@
 /**
  * 
  */
-function memberUpdateButton(){
-	location.href='http://localhost:8080/miniPJ/member/memberUpdateForm.do';	
-}
+$('#memberUpdateButton').click(function(){
+	alert('정보수정 클릭됨!');
+	location.href='http://localhost:8080/miniProject/member/memberUpdateForm';
+})
 
 $('#logoutButton').click(function(){
 	if(confirm('정말로 로그아웃하시겠습니까?')){
-		location.href = 'http://localhost:8080/miniProject/member/logout'
+		location.href = 'http://localhost:8080/miniProject/member/logout';
 	}
 })
 
@@ -52,12 +53,6 @@ $('#loginButton').click(function(){
 					alert(result.name+ ' 님 반갑습니다.');
 					location.href='/miniProject/index';
 				}
-				/*if(result.includes('sessionAccess')){
-					alert('로그인에 성공했습니다.');
-					location.href="/miniPJ";
-				}else{
-					$('#loginResultDiv').html('로그인에 실패하였습니다.');
-				}*/
 			},
 			error : function(error){
 				console.log(error);

@@ -33,16 +33,27 @@ public class MemberController {
 		HttpSession session = httpRequest.getSession();
 		session.setAttribute("sessionId", memberDTO.getId());
 		session.setAttribute("sessionName", memberDTO.getName());
+		session.setAttribute("sessionEmail", (memberDTO.getEmail1()+"@"+memberDTO.getEmail2()));
 		
 		return memberDTO;
 	}
+	
+	@PostMapping(value = "/member/checkDuplicate")
+	@ResponseBody
+	public String checkDuplicate(@RequestParam String id) {
+		String duplicateResult = memberService.getMemberById(id);
+		System.out.println(duplicateResult); 
+		
+		return duplicateResult;
+	}
+
 
 //	@RequestMa	pping(value = "/member/writeForm", method = RequestMethod.GET)
 //	@ResponseBody
 //	public String writeForm() {
 //		System.out.println("MemberController 작동, writeForm ");
 //		
-//		return "http://localhost:8080/miniProject/member/writeForm.jsp";
+//		 return "http://localhost:8080/miniProject/member/writeForm.jsp";
 //	}
 	
 	@RequestMapping(value = "/member/writeForm", method = RequestMethod.GET)
@@ -82,16 +93,39 @@ public class MemberController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/member/updateForm", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/memberUpdateForm", method = RequestMethod.GET)
 	public ModelAndView updateForm() {
 		System.out.println("member.. updateFrom.. servlet 작동..!");
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("menu", "/WEB-INF/main/menu.jsp");
 		mav.addObject("navigation", "/WEB-INF/main/navigation.jsp");
+		mav.addObject("display", "/WEB-INF/member/memberUpdateForm.jsp");
+
 		mav.setViewName("/index");
 		
 		return mav;
+	}
+	
+	@PostMapping(value = "/member/memberUpdate")
+	@ResponseBody
+	public void update(@RequestParam Map<String, String> map) {
+		System.out.println("member.. update.. servlet 작동..! 넘어온 이름 : " + map.get("name"));
+		
+		memberService.update(map);
+		
+		return ;
+	}
+	
+	@PostMapping(value = "/member/getMemberBySessionId")
+	@ResponseBody
+	public MemberDTO getMemberBySessionId(HttpServletRequest httpRequest) {
+		HttpSession session = httpRequest.getSession();
+		String sessionId = (String)session.getAttribute("sessionId");
+		
+		MemberDTO memberDTO = memberService.getMemberBySessionId(sessionId);
+		
+		return memberDTO;
 	}
 
 }

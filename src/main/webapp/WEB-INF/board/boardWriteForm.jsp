@@ -52,13 +52,13 @@
 	<input type = "button" value = "목록" id="boardListButton">
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src = "http://localhost:8080/miniPJ/script/boardWrite.js"></script>
+	<script src = "/miniProject/script/boardWrite.js"></script>
 	<script>
-		$(function(){
-			if(${sessionId == null}){
-				$('div#section').html('로그인 필요한 기능');
-			}
-		})
+	$(function(){
+		if(${sessionId == null}){
+			$('div#section').html('로그인 필요한 기능');
+		}
+	})
 	</script>
 </body>
 </html>

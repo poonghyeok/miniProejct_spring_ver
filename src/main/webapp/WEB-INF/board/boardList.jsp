@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>글목록 조회</title>
-	<link rel="stylesheet" href="/miniPJ/board/css/cssBoardList.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/cssBoardList.css">
 </head>
 
 <body>
@@ -85,7 +85,7 @@
 	</form>
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="http://localhost:8080/miniPJ/script/boardList.js"></script>
+	<script type="text/javascript" src="/miniProject/script/boardList.js"></script>
 	<script type="text/javascript">
 	</script>
 

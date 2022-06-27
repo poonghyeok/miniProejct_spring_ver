@@ -13,4 +13,10 @@ public interface MemberService {
 
 	public void write(MemberDTO memberDTO);
 
+	public String getMemberById(String id);
+
+	public MemberDTO getMemberBySessionId(String sessionId);
+
+	public void update(Map<String, String> map);
+
 }

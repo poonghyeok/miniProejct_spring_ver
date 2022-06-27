@@ -1,8 +1,9 @@
 /**
  * 
  */
+
 $('#menuWriteButton').click(function(){
-	location.href = 'http://localhost:8080/miniPJ/board/boardWriteForm.do';
+	location.href = 'http://localhost:8080/miniProject/board/boardWriteForm';
 	/*$.ajax({
 		url: 'http://localhost:8080/miniPJ/board/boardWriteForm.do',
 		type: 'post',
@@ -30,13 +31,14 @@ $('#boardWriteButton').click(function(){
 		
 	}else{
 		$.ajax({
-			url: 'http://localhost:8080/miniPJ/board/boardWrite.do',
+			url: 'http://localhost:8080/miniProject/board/boardWrite',
 			type: 'post',
-			data : $('#boardForm').serialize(),
+			data : {subject : $('#subject').val(),
+					content : $('#content').val()},
 			success : function(){
-				console.log('boardFomr 시리얼 ::: ' + $('#boardForm').serialize);
+				console.log('boardForm data ::: ' + $('#subject').val() + $('#content').val());
 				alert('글 작성을 완료했습니다..!');
-				location.href = '/miniPJ';
+				location.href = '/miniProject/index';
 			}
 			,
 			error : function(error){
@@ -48,7 +50,7 @@ $('#boardWriteButton').click(function(){
 
 
 $('#boardListButton').click(function(){
-	location.href = 'http://localhost:8080/miniPJ/board/boardList.do?pg=1';
+	location.href = 'http://localhost:8080/miniProject/board/boardList.do?pg=1';
 /*	$.ajax({
 		l
 		url: 'http://localhost:8080/miniPJ/board/boardList.do?pg=1',

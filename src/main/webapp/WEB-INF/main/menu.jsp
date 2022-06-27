@@ -36,7 +36,7 @@
 	<ul class = "mainNavigation">
 		<!-- href = "http://localhost:8080/miniPJ/board/boardWriteForm.do" -->
 		<li><a id="menuWriteButton">글쓰기</a></li>
-		<li><a href = "http://localhost:8080/miniProject/board/boardList.do?pg=1">글목록</a></li>
+		<li><a href = "/miniProject/board/boardList">글목록</a></li>
 	</ul>
 	
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

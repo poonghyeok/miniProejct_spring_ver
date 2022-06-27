@@ -28,4 +28,7 @@
 	<context:component-scan base-package="main.controller" />
 	<context:component-scan base-package="member.controller" />
 	
+	<!-- board -->
+	<context:component-scan base-package="board.controller" />
+	
 </beans:beans>

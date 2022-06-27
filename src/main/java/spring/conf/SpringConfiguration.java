@@ -4,7 +4,9 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -16,7 +18,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource("classpath:oracleMyBatis/db.properties")
 @EnableTransactionManagement
 public class SpringConfiguration {
-	 @Value("${jdbc.driver}") 
+	@Autowired
+	private ApplicationContext context; 
+	
+		@Value("${jdbc.driver}") 
 	 private String driver;
 
 	 @Value("${jdbc.url}")
@@ -47,8 +52,11 @@ public class SpringConfiguration {
 		 //calsspath를 넣어줘야하는 string을 넣으면 error가 발생함 객체가 들어오기로 되었기 떄문에
 		 //적당한 객체를 사용한다. 
 		 sqlSessionFactoryBean.setDataSource(this.dataSource());
-		 sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("member/dao/memberMapper.xml"));
+//		 sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("myBatis/mapper/*.xml"));
+//		 sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("myBatis/mapper/memberMapper.xml")
+//				 									,new ClassPathResource("myBatis/mapper/boardMapper.xml"));
 		 
+		 sqlSessionFactoryBean.setMapperLocations(context.getResources("classpath:myBatis/mapper/*.xml"));
 		 return sqlSessionFactoryBean.getObject();
 		 	
 		 //내가 원하는건 FactoryBean이 아니라 Factory 객체를 원한다. 그래서 getObject() method를 사용한다.

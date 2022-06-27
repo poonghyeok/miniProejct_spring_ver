@@ -9,10 +9,10 @@
 	   		
 <c:if test="${not empty sessionScope.sessionId}">
 	<h3>
- 		${sessionScope.sessionName}(${sessionScope.sessionId})님 반갑습니다
+ 		<p>${sessionScope.sessionName}(${sessionScope.sessionId})님 반갑습니다</p>
+ 		<hr> 
 		<input type="button" value = "로그아웃" id="logoutButton">
-		<input type="button" value = "정보수정" id="memberUpdateButton" onclick="memberUpdateButton();">
-		
+		<input type="button" value = "정보수정" id="memberUpdateButton">
 	</h3> 
 </c:if>
 

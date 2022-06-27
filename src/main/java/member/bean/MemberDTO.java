@@ -21,6 +21,4 @@ public class MemberDTO {
 	private String address2;
 	
 	
-	
-	
 }

@@ -24,7 +24,7 @@
 	</insert> <!-- insert가 sql에서의 insert의 의미일까 아니면, xml에 추가시킨다는 의미의 insert일까? -->
 	
 	<insert id="memberUpdate" parameterType="java.util.Map">
-		update member set name = #{name}, id = #{id}, pwd = #{pwd}, gender = #{gender}, email1 = #{email1}, email2 = #{email2}, tel1 = #{tel1}, tel2 = #{tel2}, tel3 = #{tel3}, zipcode = #{zipcode}, address1 = #{address1}, address2 = #{address2} where id = #{oldId} 
+		update member set name = #{name}, id = #{id}, pwd = #{pwd}, gender = #{gender}, email1 = #{email1}, email2 = #{email2}, tel1 = #{tel1}, tel2 = #{tel2}, tel3 = #{tel3}, zipcode = #{zipcode}, address1 = #{address1}, address2 = #{address2} where id = #{id} 
 	</insert> <!-- insert가 sql에서의 insert의 의미일까 아니면, xml에 추가시킨다는 의미의 insert일까? -->
 	
 	

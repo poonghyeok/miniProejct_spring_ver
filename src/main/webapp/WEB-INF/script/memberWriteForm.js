@@ -2,7 +2,7 @@
  * 
  */
 
-/*$('#idWrite').focusout(function(){
+$('#idWrite').focusout(function(){
 				if($('#idWrite').val() === ''){
 					$('#idDivWrite').html('먼저 아이디를 입력하세요!');
 					$('#idDivWrite').css('color','magenta');
@@ -10,29 +10,25 @@
 					$('#idDivWrite').css('font-weight','bold');
 				}else{
 					$.ajax({
-						url: 'http://localhost:8080/miniPJ/member/checkDuplicate.do',
+						url: 'http://localhost:8080/miniProject/member/checkDuplicate',
 						type: 'post',
-						 data: 'id=' + $('#idWrite').val(), 
 						data : {id:$('#idWrite').val()},
-						dataType: 'text' 서버로부터 받는 데이터 형식 ,
-						
-						success : function(result){
-							result = result.trim(); 공백제거를 위하여 
-							
-							if(result == 'exist'){
-								$('#idDivWrite').html('사용불가능..');
-							}else if (result == 'nonexist'){
-								$('#idDivWrite').html('사용가능..');
+						success : function(data){
+							if(data === 'exist'){
+								$('#idDivWrite').html('이미 존재하는 id입니다.');
+							}else{
+								$('#idDivWrite').html('사용가능한 아이디입니다.');
 								$('#checkedId').val($('#idWrite').val());		
 							}
 						},
 						error : function(error){
 							console.log(error);
 						} 
-					});
-				}
+					})
+				}  
 			})
-			*/
+
+
 $('#writeButton').click(function(){
 	$('#nameDivWrite').empty();
 	$('#pwdDivWrite').empty();

@@ -1,51 +1,16 @@
 package board.bean;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class BoardPaging {
 	private int currentPage; //현재페이지
 	private int pageBlock; //[이전][1][2][3][다음]
 	private int pageSize; //1페이지당 5개
 	private int totalA; //총글수
 	private StringBuffer pagingHTML;
-
-	public int getCurrentPage() {
-		return currentPage;
-	}
-
-	public void setCurrentPage(int currentPage) {
-		this.currentPage = currentPage;
-	}
-
-	public int getPageBlock() {
-		return pageBlock;
-	}
-
-	public void setPageBlock(int pageBlock) {
-		this.pageBlock = pageBlock;
-	}
-
-	public int getPageSize() {
-		return pageSize;
-	}
-
-	public void setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-	}
-
-	public int getTotalA() {
-		return totalA;
-	}
-
-	public void setTotalA(int totalA) {
-		this.totalA = totalA;
-	}
-
-	public StringBuffer getPagingHTML() {
-		return pagingHTML;
-	}
-
-	public void setPagingHTML(StringBuffer pagingHTML) {
-		this.pagingHTML = pagingHTML;
-	}
 
 	public void makePagingHTML() {
 		pagingHTML = new StringBuffer();
